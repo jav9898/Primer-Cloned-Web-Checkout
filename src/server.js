@@ -78,7 +78,7 @@ app.post('/client-session', async (req, res) => {
             itemId: 'shoes-123',
             description: 'Some nice shoes!',
             amount: 3000, // Amount should be in minor units!
-            quantity: 1,
+            quantity: 12,
           },
         ],
       }

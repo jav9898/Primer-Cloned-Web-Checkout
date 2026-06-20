@@ -2,23 +2,13 @@
 
 <h1 align="center"><img src="./images/primer-logo.png" height="24px"> Example Web Checkout</h1>
 
-<h3 align="center">
-
-Example integration of Universal Checkout using the [Primer Web SDK](https://primer.io)
-
-</h3>
-
-<h4 align="center">
-
-This is a companion project to the [Web Getting Start Guide](https://primer.io/docs/get-started/web).
-
-</h4>
 
 ---
 
-## 📝 About This Implementation
+## About This Implementation
 
-This project is a **clone** of the official Primer example repository: [https://github.com/primer-io/example-web-checkout](https://github.com/primer-io/example-web-checkout)
+DISCLAIMER
+This project is a **clone** of the official Primer example repository: [Primer Web Checkout](https://github.com/primer-io/example-web-checkout)
 
 ### Modifications Made
 
@@ -129,11 +119,87 @@ You should see Universal Checkout appear with the payment methods configured on 
 
 ![Checkout UI](./images/checkout.png)
 
-## 👀 What's next?
+## ⚙️ Configuration & Customization
 
-- ✨ Explore the capabilities of your [Dashboard](https://dashboard.sandbox.primer.io/)
-- 📚 Take a look at our [Documentation](https://primer.io/docs) to customize Universal Checkout to better fit your needs
-- 📖 Explore our [Web SDK Reference](https://www.npmjs.com/package/@primer-io/checkout-web) and [Server API Reference](https://apiref.primer.io)
-- 🎒 Learn more about [how Primer works](https://primer.io/docs/how-primer-works)
-- 🤙 Reach out to us at [support@primer.io](mailto:support@primer.io) if you are facing any issues
-- 🤘 Join our developer community on [Discord](https://bit.ly/3xBTFl6)
+All checkout configuration is managed in the `src/server.js` file. To customize the checkout behavior, edit the `/client-session` endpoint (around line 37).
+
+### Key Configuration Options
+
+**File to edit:** `src/server.js`
+
+#### Currency and Amount
+- **Currency Code** (line 53): Change the 3-character currency code
+  ```javascript
+  currencyCode: 'SGD', // Change to 'USD', 'EUR', etc.
+  ```
+
+- **Payment Amount** (line 80): Update the amount in minor units (cents)
+  ```javascript
+  amount: 3000, // 3000 = $30.00, 2500 = $25.00, etc.
+  ```
+
+- **Item Quantity** (line 81): Adjust the quantity of items
+  ```javascript
+  quantity: 12, // Change to desired quantity
+  ```
+
+#### Customer Information
+- **Email Address** (line 57): Update customer email
+  ```javascript
+  emailAddress: "javier@test.com", // Change to your test email
+  ```
+
+- **Mobile Number** (line 58): Update customer phone
+  ```javascript
+  mobileNumber: "+6588889999", // Change to your test number
+  ```
+
+- **Customer Name** (lines 59-60): Update customer name
+  ```javascript
+  firstName: "John",
+  lastName: "Smith",
+  ```
+
+- **Billing Address** (lines 61-68): Update billing address details
+  ```javascript
+  billingAddress: {
+    firstName: "John",
+    lastName: "Smith",
+    postalCode: "CB94BQ",
+    addressLine1: "47A",
+    countryCode: "CL",
+    city: "Cambridge",
+    state: "Cambridgeshire"
+  }
+  ```
+
+#### API Version
+- **API Version** (line 44): Update if needed for compatibility
+  ```javascript
+  'X-Api-Version': '2.4', // Current version
+  ```
+
+#### Item Details
+- **Item ID** (line 78): Product identifier
+  ```javascript
+  itemId: 'shoes-123', // Change to your product ID
+  ```
+
+- **Item Description** (line 79): Product description
+  ```javascript
+  description: 'Some nice shoes!', // Change to your product description
+  ```
+
+### Applying Changes
+
+After making changes to `src/server.js`:
+1. Save the file
+2. The server will automatically restart (thanks to nodemon)
+3. Refresh your browser at http://localhost:8880/ to see the changes
+
+### Environment Variables
+
+For API configuration, edit the `.env` file:
+- **API_KEY**: Your Primer API key (required)
+- **PRIMER_API_ENVIRONMENT**: Set to `SANDBOX` or `PRODUCTION`
+- **PORT**: Server port (default: 8880)
