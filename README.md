@@ -14,6 +14,47 @@ This is a companion project to the [Web Getting Start Guide](https://primer.io/d
 
 </h4>
 
+---
+
+## 📝 About This Implementation
+
+This project is a **clone** of the official Primer example repository: [https://github.com/primer-io/example-web-checkout](https://github.com/primer-io/example-web-checkout)
+
+### Modifications Made
+
+The following changes were made to adapt this integration for local testing and to use updated API versions:
+
+- **API Version Update**: Updated from `X-Api-Version: 2.2` to `X-Api-Version: 2.4` to use the latest API version
+- **Currency Change**: Changed from `EUR` to `SGD` (Singapore Dollars) for regional testing
+- **Customer Email**: Updated from `test@test.com` to `javier@test.com` for personal testing
+- **Payment Amount**: Increased from `2500` (€25.00) to `3000` (SGD 30.00) for the test transaction
+
+### Integration Setup
+
+This implementation follows the Primer Web SDK integration guidelines:
+
+1. **Web SDK Installation**: The checkout uses the Primer Universal Checkout loaded from the CDN
+2. **Local Initialization**: The checkout is initialized in a local test environment using the Sandbox API
+3. **Checkout Flow**: A simple payment flow demonstrating:
+   - Client-side checkout initialization
+   - Payment method tokenization
+   - Server-side payment authorization
+4. **Configuration**: All configurations are managed through environment variables in `.env`
+
+### Assumptions Made
+
+- The user has a valid Primer Sandbox account with API access
+- The API key provided in `.env` matches the Sandbox environment
+- The checkout will be used for testing purposes only (Sandbox mode)
+- Node.js and npm/yarn are available on the development machine
+- Port 8880 is available for local development (configurable via `PORT` env variable)
+
+### Challenges Encountered
+
+- **API Version Compatibility**: The original repository used API version 2.2, which has been superseded by version 2.4. This required updating the `X-Api-Version` header to ensure compatibility with the current Primer API.
+- **Regional Configuration**: Adapting the currency from EUR to SGD required updating both the `currencyCode` field and ensuring the payment amount was appropriate for the target currency.
+- **Environment Setup**: Ensuring the correct API key and environment configuration (SANDBOX vs PRODUCTION) was critical for successful local testing.
+
 <br />
 
 ## ✅ Pre-requisites

@@ -41,7 +41,7 @@ app.post('/client-session', async (req, res) => {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
-      'X-Api-Version': '2.2',
+      'X-Api-Version': '2.4',
       'X-Api-Key': API_KEY,
     },
     body: JSON.stringify({
@@ -50,11 +50,11 @@ app.post('/client-session', async (req, res) => {
       orderId: 'order-' + Math.random(),
 
       // 3-character Currency Code used for all the amount of this session
-      currencyCode: 'EUR',
+      currencyCode: 'SGD',
 
       // emailAddress and billingAddress are required for 3DS
       customer: {
-        emailAddress: "test@test.com",
+        emailAddress: "javier@test.com",
         mobileNumber: "+6588889999",
         firstName: "John",
         lastName: "Smith",
@@ -77,7 +77,7 @@ app.post('/client-session', async (req, res) => {
           {
             itemId: 'shoes-123',
             description: 'Some nice shoes!',
-            amount: 2500, // Amount should be in minor units!
+            amount: 3000, // Amount should be in minor units!
             quantity: 1,
           },
         ],
