@@ -18,6 +18,18 @@ The following changes were made to adapt this integration for local testing and 
 - **Customer Email**: Updated from `test@test.com` to `javier@test.com` for personal testing
 - **Payment Amount**: Increased from `2500` (€25.00) to `3000` (SGD 30.00) for the test transaction
 
+### Integration Setup
+
+This implementation follows the Primer Web SDK integration guidelines:
+
+1. **Web SDK Installation**: The checkout uses the Primer Universal Checkout loaded from the CDN
+2. **Local Initialization**: The checkout is initialized in a local test environment using the Sandbox API
+3. **Checkout Flow**: A simple payment flow demonstrating:
+   - Client-side checkout initialization
+   - Payment method tokenization
+   - Server-side payment authorization
+4. **Configuration**: All configurations are managed through environment variables in `.env`
+
 ### Challenges Encountered
 
 - **API Version Compatibility**: The original repository used API version 2.2, which has been superseded by version 2.4. This required updating the `X-Api-Version` header to ensure compatibility with the current Primer API.
